@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import fi.jyu.mit.fxgui.ListChooser?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxTreeniseuranta.TreeniseurantaGUIController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="Tiedosto">
+            <items>
+                  <MenuItem mnemonicParsing="false" onAction="#handleTallenna" text="Tallenna">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+              <MenuItem mnemonicParsing="false" onAction="#handleLopeta" text="Sulje">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="Q" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Muokkaa">
+            <items>
+              <MenuItem fx:id="uusiTreeni" mnemonicParsing="false" onAction="#handleUusiTreeni" text="Uusi Treeni...">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
+                  <MenuItem fx:id="muokkaaTreeni" mnemonicParsing="false" onAction="#handleMuokkaaTreeni" text="Muokkaa Treeni...">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="M" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
+                  <MenuItem fx:id="poistaTreeni" mnemonicParsing="false" onAction="#handlePoistaTreeni" text="Poista Treeni...">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="D" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Apua">
+            <items>
+                  <MenuItem mnemonicParsing="false" onAction="#handleApua" text="Apua..." />
+              <MenuItem mnemonicParsing="false" onAction="#handleTietoja" text="Tietoja..." />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <left>
+      <SplitPane BorderPane.alignment="CENTER">
+         <items>
+            <BorderPane>
+               <right>
+                  <BorderPane BorderPane.alignment="CENTER">
+                     <top>
+                        <Label text="Treenit" BorderPane.alignment="CENTER">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <BorderPane.margin>
+                              <Insets bottom="5.0" />
+                           </BorderPane.margin></Label>
+                     </top>
+                     <left>
+                        <ScrollPane BorderPane.alignment="CENTER">
+                           <content>
+                              <ListChooser fx:id="chooserTreenit" editable="true" rivit="" />
+                           </content>
+                        </ScrollPane>
+                     </left>
+                  </BorderPane>
+               </right>
+               <top>
+                  <BorderPane BorderPane.alignment="CENTER">
+                     <left>
+                        <Label text="Etsi treeni:" BorderPane.alignment="CENTER">
+                           <BorderPane.margin>
+                              <Insets left="10.0" />
+                           </BorderPane.margin>
+                        </Label>
+                     </left>
+                     <center>
+                        <TextField fx:id="hakuehto" onKeyReleased="#handleHaeTreeni" BorderPane.alignment="CENTER">
+                           <BorderPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="10.0" top="10.0" />
+                           </BorderPane.margin>
+                        </TextField>
+                     </center>
+                  </BorderPane>
+               </top>
+            </BorderPane>
+         </items>
+      </SplitPane>
+   </left>
+   <right>
+      <BorderPane>
+         <top>
+            <Label text="Treenin muistiinpanot" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets left="15.0" top="10.0" />
+               </BorderPane.margin>
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+         </top>
+         <left>
+            <GridPane BorderPane.alignment="CENTER">
+              <columnConstraints>
+                <ColumnConstraints fillWidth="false" halignment="RIGHT" hgrow="SOMETIMES" />
+                <ColumnConstraints hgrow="ALWAYS" />
+                  <ColumnConstraints hgrow="ALWAYS" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints />
+                <RowConstraints />
+                <RowConstraints />
+                  <RowConstraints />
+                  <RowConstraints />
+              </rowConstraints>
+               <padding>
+                  <Insets left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <children>
+                  <Label text="Pituus:" GridPane.rowIndex="2" />
+                  <Label text="Paino:" GridPane.rowIndex="3" />
+                  <Label text="BMI" GridPane.rowIndex="4" />
+                  <TextField fx:id="bmikentta" alignment="CENTER_RIGHT" text="0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4">
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" />
+                     </GridPane.margin></TextField>
+                  <TextField fx:id="pituuskentta" alignment="CENTER_RIGHT" onKeyReleased="#handleBMI" text="0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin></TextField>
+                  <TextField fx:id="painokentta" alignment="CENTER_RIGHT" onKeyReleased="#handleBMI" text="0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3">
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" />
+                     </GridPane.margin></TextField>
+                  <TextField fx:id="muistiinpanot" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin></TextField>
+                  <Label text="cm" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <Label text="kg" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+               </children>
+            </GridPane>
+         </left>
+      </BorderPane>
+   </right>
+   <bottom>
+      <BorderPane BorderPane.alignment="CENTER">
+         <left>
+            <HBox spacing="10.0" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </BorderPane.margin>
+               <children>
+                  <Button fx:id="avaaUusiTreeni" mnemonicParsing="false" onAction="#handleUusiTreeni" text="Uusi treeni">
+                     <tooltip>
+                        <Tooltip text="Lisää uusi treeni" />
+                     </tooltip>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#handleTallenna" text="Tallenna">
+                     <tooltip>
+                        <Tooltip text="Tallenna muutokset" />
+                     </tooltip>
+                  </Button>
+                  <Button fx:id="avaaUusiLiike" mnemonicParsing="false" onAction="#handleUusiLiike" prefHeight="25.0" prefWidth="50.0" text="Lisää">
+                     <HBox.margin>
+                        <Insets left="153.0" />
+                     </HBox.margin>
+                     <tooltip>
+                        <Tooltip text="Lisää liike" />
+                     </tooltip>
+                  </Button>
+                  <Button fx:id="buttonMuokkaaLiike" mnemonicParsing="false" onAction="#handleMuokkaaLiike" prefHeight="25.0" text="Muokkaa" />
+                  <Button fx:id="poistaLiike" mnemonicParsing="false" onAction="#handlePoistaLiike" prefHeight="25.0" prefWidth="50.0" text="Poista">
+                     <tooltip>
+                        <Tooltip text="Poista liike" />
+                     </tooltip>
+                  </Button>
+               </children>
+            </HBox>
+         </left>
+         <right>
+            <HBox spacing="10.0" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </BorderPane.margin>
+               <children>
+                  <Button fx:id="avaaPainoseuranta" mnemonicParsing="false" onAction="#handlePainoseuranta" text="Painoseuranta">
+                     <tooltip>
+                        <Tooltip text="Avaa painoseuranta" />
+                     </tooltip>
+                  </Button>
+               </children>
+            </HBox>
+         </right>
+      </BorderPane>
+   </bottom>
+   <center>
+      <SplitPane BorderPane.alignment="CENTER">
+         <items>
+            <ScrollPane>
+               <content>
+                  <ListChooser fx:id="chooserLiikkeet" editable="true" prefHeight="462.0" prefWidth="248.0" rivit="" />
+               </content>
+            </ScrollPane>
+         </items>
+      </SplitPane>
+   </center>
+</BorderPane>
