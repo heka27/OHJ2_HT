@@ -1,1 +1,1 @@
-# OHJ2_HT
+# Ohjelmointi 2-kurssin harjoitustyö
